@@ -1,0 +1,11 @@
+class BotError(Exception):
+    user_message = "Ocorreu um erro inesperado."
+class TrackNotFoundError(BotError): user_message = "Não foi possível encontrar ou carregar esta faixa."
+class TrackTooLongError(BotError): user_message = "Esta faixa é longa demais para ser reproduzida."
+class QueueEmptyError(BotError): user_message = "A fila está vazia."
+class QueueFullError(BotError): user_message = "A fila está cheia."
+class BotNotConnectedError(BotError): user_message = "Não estou conectado a um canal de voz."
+class UserNotInVoiceError(BotError): user_message = "Você precisa estar em um canal de voz."
+class DifferentChannelError(BotError): user_message = "Você precisa estar no mesmo canal de voz que eu."
+class PlaylistNotFoundError(BotError): user_message = "Playlist não encontrada."
+class PlaylistFullError(BotError): user_message = "Esta playlist está cheia."
