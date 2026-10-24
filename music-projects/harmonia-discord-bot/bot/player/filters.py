@@ -1,0 +1,1 @@
+FILTERS={"bassboost":"equalizer=f=40:width_type=o:width=2:g=5","nightcore":"atempo=1.15,asetrate=44100*1.25","slowmo":"atempo=0.75","echo":"aecho=0.8:0.9:1000:0.3","vaporwave":"atempo=0.85,asetrate=44100*0.9","8d":"apulsator=hz=0.08","karaoke":"pan=stereo|c0=c0-c1|c1=c1-c0","reverb":"aecho=0.8:0.88:60:0.4","treble":"equalizer=f=8000:width_type=o:width=2:g=5"}
