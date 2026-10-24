@@ -1,0 +1,40 @@
+name: CI — Lint + Testes
+
+on:
+  push:
+    branches: ["main", "develop"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: discord-bot
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: discord-bot/requirements.txt
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Lint com ruff
+        run: ruff check .
+
+      - name: Verificar formatação com ruff
+        run: ruff format --check .
+
+      - name: Verificar tipos com mypy
+        run: mypy bot.py core/ utils/ config/ --ignore-missing-imports
+        continue-on-error: true  # mypy pode falhar em imports de discord.py sem stubs
+
+      - name: Rodar testes com pytest
+        run: pytest tests/ -v --tb=short
